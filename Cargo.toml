@@ -2,7 +2,36 @@
 name = "zero2prod"
 version = "0.1.0"
 edition = "2021"
+authors = ["Federico Vitale <mail@fedevitale.dev>"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "zero2prod"
+
 [dependencies]
+actix-web = "4.0.0"
+reqwest = "0.11.11"
+serde = { version = "1.0.142", features = ["derive"] }
+tokio = { "version" = "1", features = ["macros", "rt-multi-thread"] }
+tracing = "0.1.36"
+config = "0.13.2"
+uuid = { version = "1.1.2", features = ["v4"] } 
+chrono = "0.4.20"
+
+[dependencies.sqlx]
+version = "0.6"
+default-features = false
+features = [
+  "runtime-actix-rustls",
+  "macros",
+  "postgres",
+  "uuid",
+  "chrono",
+  "migrate"
+]
+
